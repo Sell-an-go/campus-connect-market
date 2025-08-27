@@ -6,13 +6,13 @@
     --text-color: #1F2937;
     --subtle-text: #6B7280;
     --border-color: #E5E7EB;
-    --price-green: #16A34A; /* Green for the price */
-    --tag-dark-bg: #374151; /* Dark grey for category tag */
-    --tag-good-bg: #FEF9C3; /* Yellow for 'Good' condition */
-    --tag-good-text: #713F12;
-    --tag-new-bg: #DBEAFE; /* Blue for 'Like New' condition */
-    --tag-new-text: #1E40AF;
-    --tag-poor-bg: #FEE2E2; /* Red for 'Poor' condition */
+    --price-green: #16A34A; 
+    --tag-dark-bg: #374151; 
+    --tag-good-bg: #FEF9C3; 
+    --tag-good-text: #713F12
+    --tag-new-bg: #DBEAFE; 
+    --tag-new-text: #1E40AF
+    --tag-poor-bg: #FEE2E2; 
     --tag-poor-text: #991B1B;
 }
 
