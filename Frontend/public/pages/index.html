@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusMarket</title>
+    <link rel="stylesheet" href="../styleSheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <nav class="navbar">
+
+                <a href="#" class="logo">
+                    <img src="../views//weblogo.png" alt="CampusMarket Logo"> <div>
+                        <strong>CampusMarket</strong>
+                        <span>Student Marketplace</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="./sell-item.html">+ Sell Item</a></li>
+                    <li><a href="#">My Items</a></li>
+                </ul>
+                <a href="#" class="nav-button">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Login</span>
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Find Great Deals at Your Campus</h1>
+                <p>Buy and sell items with fellow students. From furniture to electronics, find everything you need for college life.</p>
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search for products...">
+                </div>
+            </section>
+
+            <section class="filters-stats-section">
+                <div class="filters">
+                    <span><i class="fa-solid fa-filter"></i> Filters:</span>
+                    <button class="filter-btn active">All Categories</button>
+                    <button class="filter-btn">Furniture</button>
+                    <button class="filter-btn">Electronics</button>
+                    <button class="filter-btn">Books</button>
+                    <button class="filter-btn">Appliances</button>
+                    <button class="filter-btn">Clothing</button>
+                    <button class="filter-btn">Other</button>
+                    <select class="college-filter">
+                        <option>All Colleges</option>
+                        <option>IIT Bombay</option>
+                        <option>University of Delhi</option>
+                    </select>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card"><h3>10</h3><p>Available Items</p></div>
+                    <div class="stat-card"><h3>9</h3><p>Colleges</p></div>
+                    <div class="stat-card"><h3>7</h3><p>Categories</p></div>
+                </div>
+            </section>
+
+            <section class="listings-section">
+                <div class="listings-header">
+                    <h2>Recent Listings</h2>
+                    <a href="#">View All ></a>
+                </div>
+
+                <div class="product-grid">
+                    <!-- Updated Product Card 1 -->
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/300x200/E0E7FF/4F46E5?text=Macbook" alt="Macbook">
+                            <span class="tag category-tag">Electronics</span>
+                            <span class="tag condition-tag good">Good</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Macbook</h4>
+                            <p class="price">₹40000</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> JECRC UNIVERSITY, JAIPUR</p>
+                            <p class="date"><i class="fa-solid fa-calendar-days"></i> Aug 24, 2025</p>
+                            <p class="short-desc">M1 Chip, great condition</p>
+                        </div>
+                    </div>
+                    <!-- Updated Product Card 2 -->
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/300x200/FEF2F2/DC2626?text=Socks" alt="Socks">
+                            <span class="tag category-tag">Clothing</span>
+                            <span class="tag condition-tag poor">Poor</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Socks</h4>
+                            <p class="price">₹100</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> JECRC UNIVERSITY, JAIPUR</p>
+                            <p class="date"><i class="fa-solid fa-calendar-days"></i> Aug 24, 2025</p>
+                            <p class="short-desc">Slightly used</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="https://placehold.co/300x200/F0FFF4/2F855A?text=Shoe+Stand" alt="Shoe Stand">
+                            <span class="tag category-tag">Other</span>
+                            <span class="tag condition-tag good">Good</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Shoe stand</h4>
+                            <p class="price">₹500</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> University of Delhi, New Delhi</p>
+                            <p class="date"><i class="fa-solid fa-calendar-days"></i> Aug 24, 2025</p>
+                            <p class="short-desc">Wooden shoe stand</p>
+                        </div>
+                    </div>
+                    <!-- Updated Product Card 4 -->
+                    <div class="product-card">
+                        <div class="card-image">
+                           <img src="https://placehold.co/300x200/EBF8FF/3182CE?text=Whiteboard" alt="Whiteboard">
+                            <span class="tag category-tag">Furniture</span>
+                            <span class="tag condition-tag new">Like New</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Large Whiteboard with Stand</h4>
+                            <p class="price">₹1800</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> IIT Delhi</p>
+                            <p class="date"><i class="fa-solid fa-calendar-days"></i> Aug 24, 2025</p>
+                            <p class="short-desc">Includes duster and markers</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="modal-title">Product Title</h2>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img src="https://placehold.co/600x400/E0E7FF/4F46E5?text=Product+Image" alt="Product Image">
+                </div>
+                <div class="modal-details">
+                    <p class="modal-price">₹2500</p>
+                    <div class="modal-tags">
+                        <span class="modal-tag category">Furniture</span>
+                        <span class="modal-tag condition">Good</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p class="modal-description">Detailed product description goes here. It provides more information than the short summary on the card.</p>
+                    <h3>Location</h3>
+                    <p class="modal-location"><i class="fa-solid fa-location-dot"></i> Location details</p>
+                    <p class="modal-posted-date"><i class="fa-regular fa-clock"></i> Posted on August 24, 2025 at 6:41 PM</p>
+                    <hr>
+                    <h3>Contact Seller</h3>
+                    <button class="modal-contact-btn">Show Contact Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- 1. Filter Button Highlighting ---
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelector('.filter-btn.active')?.classList.remove('active');
+                button.classList.add('active');
+            });
+        });
+
+        // --- 2. Modal Popup Functionality (NEW) ---
+        const productCards = document.querySelectorAll('.product-card');
+        const modalOverlay = document.getElementById('product-modal');
+        const modalCloseBtn = document.querySelector('.modal-close-btn');
+
+        const openModal = () => {
+            modalOverlay.style.display = 'flex';
+        };
+
+        const closeModal = () => {
+            modalOverlay.style.display = 'none';
+        };
+
+        productCards.forEach(card => {
+            card.addEventListener('click', openModal);
+        });
+
+        modalCloseBtn.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
