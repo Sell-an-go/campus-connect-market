@@ -7,11 +7,11 @@ import collegeModel from "../models/college.model.js"
 export const productDetails = async(req,res)=>{
     const {title,description,price,category,condition
         ,college_id,status,location} = req.body
-
+    console.log("Product-----", req.user);
     const image_urls = await imageUpload(req.file.buffer)
 
     const product = await saveProduct(title,description,price,category,
-                        condition,image_urls,college_id,status,location)
+                       condition,image_urls, req.user._id, college_id,status,location)
     const college = await saveCollege(college_id)
     res.redirect('/')
 }
@@ -49,3 +49,5 @@ export const getAllColleges = async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 }
+}
+

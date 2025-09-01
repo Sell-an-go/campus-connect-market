@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell an Item - CampusMarket</title>
-    <!-- Link to the new, separate CSS file -->
     <link rel="stylesheet" href="../styleSheets/sell-item-style.css">
-    <!-- Links for Fonts and Icons (same as your main page) -->
+    <link rel="stylesheet" href="../styleSheets/login-style.css">
+    <link rel="stylesheet" href="../styleSheets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,9 +16,10 @@
 
     <div class="container">
         <header>
-            <!-- A consistent navigation bar -->
             <nav class="navbar">
+
                 <a href="/" class="logo"> <!-- Link back to home -->
+
                     <img src="../views/weblogo.png" alt="CampusMarket Logo"> <div>
                         <strong>CampusMarket</strong>
                         <span>Student Marketplace</span>
@@ -26,12 +27,19 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li> 
-                    <li><a href="#">My Items</a></li>
+                    <li><a >+ Sell Item</a></li>
+                    <li><a href="">My Items</a></li>
                 </ul>
-                <a href="#" class="nav-button">
-                    <i class="fa-regular fa-user"></i>
-                    <span>Login</span>
-                </a>
+                <div class="profile-dropdown">
+                    <a href="/pages/login.html" class="nav-button active" id="active"> 
+                        <i class="fa-regular fa-user"></i>
+                        <span id="isActive">Login</span>
+                    </a>
+                    <div class="dropdown-content" id="profileDropdown">
+                        <a href=""> <i class="fa-solid fa-user-circle"></i> Profile</a>
+                        <a id="logout-btn"> Logout</a>
+                    </div>
+                </div>
             </nav>
         </header>
 
@@ -43,7 +51,7 @@
                 <form class="sell-form" action="/product/details" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="product-title">Product Title</label>
-                        <input type="text" id="product-title" placeholder="e.g., Wooden Study Table" name="title">
+                        <input type="text" id="product-title" placeholder="e.g., Wooden Study Table" name="title" required>
                     </div>
                     
                     <div class="form-group-row">
@@ -60,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <label for="price">Price (₹)</label>
-                            <input type="number" id="price" placeholder="e.g., 2500" name="price">
+                            <input type="number" id="price" placeholder="e.g., 2500" name="price" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -100,7 +108,8 @@
 
                     <div class="form-group">
                         <label for="location">Location</label>
-                        <input type="text" id="location" placeholder="e.g., Hostel 5, Room 101" name="location">
+                        <input type="text" id="location" placeholder="e.g., Hostel 5, Room 101" name="location" required>
+
                     </div>
 
                     <div class="form-group">
@@ -115,6 +124,7 @@
     </div>
 
     <script>
+
         const input = document.getElementById("product-image");
         const label = document.getElementById("upload-label");
       
@@ -130,6 +140,54 @@
            
           }
         });
-      </script>
+
+        (async function() {
+            try {
+                const loginCheck = await fetch("http://localhost:2000/loginVerify");
+                const result = await loginCheck.json();
+
+                let status = document.getElementById("isActive");
+                let active = document.getElementById("active");
+                const profileDropdown = document.getElementById("profileDropdown");
+
+                if (result == undefined || result.result === "User not verified!") {
+
+                  status.innerText = "Login";
+                  active.href = "/pages/login.html";
+                
+                  profileDropdown.style.display = "none";
+                } 
+                else {
+                    console.log("Index.html----", result);
+                    status.innerText = result.username;
+                    active.href = "javascript:void(0)"; // disable link
+                    
+                    active.addEventListener("click", (event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      profileDropdown.classList.toggle("show");
+                    });
+                  
+                    window.addEventListener("click", (event) => {
+                      if (
+                        profileDropdown.classList.contains("show") &&
+                        !active.contains(event.target)
+                      ) {
+                        profileDropdown.classList.remove("show");
+                      }
+                    });
+                }
+        }  catch (err) {
+            console.error("Error in login verify fetch:", err);
+        }
+        })();
+        let btn = document.getElementById("logout-btn");
+        btn.addEventListener("click", async () => {
+            console.log("Im working!")
+            await fetch("http://localhost:2000/logout"); 
+            window.location.href = "/";
+        })
+    </script>
+
 </body>
 </html>
