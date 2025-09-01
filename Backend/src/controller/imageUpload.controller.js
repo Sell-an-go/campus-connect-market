@@ -15,7 +15,6 @@ export const imageUpload = async (buffer) => {
         resolve(result.secure_url); //  Direct Cloudinary image URL
       }
     );
-
     // Convert buffer to readable stream
     Readable.from(buffer).pipe(uploadStream);
   });
