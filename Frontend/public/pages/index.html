@@ -10,27 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
     <div class="container">
         <header>
             <nav class="navbar">
 
-                <a href="#" class="logo">
-                    <img src="../views//weblogo.png" alt="CampusMarket Logo"> <div>
+                <a href="" class="logo">
+                    <img src="../views/weblogo.png" alt="CampusMarket Logo"> <div>
                         <strong>CampusMarket</strong>
                         <span>Student Marketplace</span>
                     </div>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="./sell-item.html">+ Sell Item</a></li>
-                    <li><a href="#">My Items</a></li>
+                    <li><a href="">Home</a></li>
+                    <li><a href="/pages/sell-item.html">+ Sell Item</a></li>
+                    <li><a href="">My Items</a></li>
                 </ul>
-                <a href="#" class="nav-button">
-                    <i class="fa-regular fa-user"></i>
-                    <span>Login</span>
-                </a>
+                <div class="profile-dropdown">
+                    <a href="/pages/login.html" class="nav-button active" id="active"> 
+                        <i class="fa-regular fa-user"></i>
+                        <span id="isActive">Login</span>
+                    </a>
+                    <div class="dropdown-content" id="profileDropdown">
+                        <a href=""> <i class="fa-solid fa-user-circle"></i> Profile</a>
+                        <a id="logout-btn"> Logout</a>
+                    </div>
+                </div>
             </nav>
         </header>
 
@@ -203,6 +210,59 @@
             }
         });
     </script>
+
+    <script>
+        (async function() {
+            try {
+                const loginCheck = await fetch("http://localhost:2000/loginVerify");
+                const result = await loginCheck.json();
+
+                let status = document.getElementById("isActive");
+                let active = document.getElementById("active");
+                const profileDropdown = document.getElementById("profileDropdown");
+
+                if (result == undefined || result.result === "User not verified!") {
+
+                  status.innerText = "Login";
+                  active.href = "/pages/login.html";
+                
+                  profileDropdown.style.display = "none";
+                } 
+                else {
+                    console.log("Index.html----", result);
+                    status.innerText = result.username;
+                    active.href = "javascript:void(0)"; // disable link
+                    
+                    active.addEventListener("click", (event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      profileDropdown.classList.toggle("show");
+                    });
+                  
+                    window.addEventListener("click", (event) => {
+                      if (
+                        profileDropdown.classList.contains("show") &&
+                        !active.contains(event.target)
+                      ) {
+                        profileDropdown.classList.remove("show");
+                      }
+                    });
+                }
+        }  catch (err) {
+            console.error("Error in login verify fetch:", err);
+        }
+        })();
+    </script>       
+    
+    <script>
+        let btn = document.getElementById("logout-btn");
+        btn.addEventListener("click", async () => {
+            console.log("Im working!")
+            await fetch("http://localhost:2000/logout"); 
+            window.location.href = "/";
+        })
+    </script>
+    
 
 </body>
 </html>
