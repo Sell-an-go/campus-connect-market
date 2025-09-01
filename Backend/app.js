@@ -55,7 +55,6 @@ app.get('/loginVerify', (req, res) => {
 });
 
 
-
 app.post('/login', findUser);   // Login
 
 app.get('/logout', (req, res) => {
@@ -68,7 +67,7 @@ app.get('/logout', (req, res) => {
     }); 
     return res.json({result: true});
 });
-
+        
 app.post('/product/details', upload.single('image_urls'), isLoggedIn, productDetails)   // add a product
 
 app.post("/create_account", createUser);    // create a new account
@@ -92,3 +91,4 @@ app.listen(2000,() => {
     cloudinary_config()
     console.log("Server 2000 is running.")
 })
+
