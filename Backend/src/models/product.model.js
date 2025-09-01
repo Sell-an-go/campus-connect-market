@@ -27,7 +27,7 @@ const productSchema = new mongoose.Schema({
     },
     owner_id:{
         type:String,
-        required:false
+        required:true
     },
     college_id:{
         type:String,
@@ -41,8 +41,6 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     }
-
-
 })
 
 const product = mongoose.model("Product",productSchema)

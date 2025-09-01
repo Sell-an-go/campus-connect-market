@@ -470,3 +470,48 @@ body {
 .modal-contact-btn:hover {
     background-color: #4338CA;
 }
+
+
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.profile-dropdown .nav-button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Ensures font consistency */
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    background-color: var(--card-background);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    z-index: 10; /* Ensures it appears on top of other content */
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+
+.dropdown-content.show {
+    display: block;
+}
