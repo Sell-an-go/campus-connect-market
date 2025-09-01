@@ -3,21 +3,29 @@ import { connectDB } from './src/config/mongo.config.js';
 import dotenv from "dotenv";
 import cloudinary_config from './src/config/cloudinary.config.js';
 import { upload } from './src/middleware/storage.middleware.js';
-import { productDetails } from './src/controller/product.controller.js';
+import { getAllColleges, productDetails, productFilters } from './src/controller/product.controller.js';
 import createUser from './src/controller/user.controller.js';
 import { home } from './src/controller/homePage.controller.js'
 import { findUser } from './src/controller/login.controller.js';
 import cookieParser from 'cookie-parser';
 import { verifyToken } from './src/controller/auth.controller.js';
 import isLoggedIn from './src/middleware/verify.middleware.js';
+
 dotenv.config("./.env")
 
+
 const app = express()
-app.use(cookieParser());
+
+
+
+app.use(express.static('../Frontend/public'));
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use(express.static("/Users/mac/Desktop/JavaScript/campus-connect-market/Frontend/public"))
+
+app.use(cookieParser());
+
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -65,6 +73,19 @@ app.post('/product/details', upload.single('image_urls'), isLoggedIn, productDet
 
 app.post("/create_account", createUser);    // create a new account
 
+
+app.get('/',(req,res)=>{
+    res.sendFile('/Users/himanshu/Desktop/JS/Projects/campus-connect-market/Frontend/public/pages/index.html')
+})
+
+
+app.get('/product/details',(req,res)=>{
+    res.sendFile('/Users/himanshu/Desktop/JS/Projects/campus-connect-market/Frontend/public/pages/sell-item.html')
+})
+
+app.post('/product/details',upload.single('image_urls'),productDetails)
+app.get('/getProduct',productFilters)
+app.get('/getAllColleges',getAllColleges)
 
 app.listen(2000,() => {
     connectDB()
