@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- myItems.html -->
+
 </head>
 <body>
 
@@ -27,8 +29,8 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li> 
-                    <li><a >+ Sell Item</a></li>
-                    <li><a href="">My Items</a></li>
+                    <li> <a>+ Sell Item</a></li>
+                    <li><a href="/pages/myItems.html" id="toMyItems">My Items</a></li>
                 </ul>
                 <div class="profile-dropdown">
                     <a href="/pages/login.html" class="nav-button active" id="active"> 
@@ -114,9 +116,9 @@
 
                     <div class="form-group">
                         <label for="college">College</label>
-                        <input type="text" id="college" placeholder="e.g., JECRC University" name="college_id">
+                        <input type="text" id="college" placeholder="e.g., JECRC University" name="college_id" required>
                     </div>
-
+                    <p id="userVerify" style="color: red;"></p>
                     <button type="submit" class="submit-btn">List My Item</button>
                 </form>
             </div>
@@ -149,13 +151,19 @@
                 let status = document.getElementById("isActive");
                 let active = document.getElementById("active");
                 const profileDropdown = document.getElementById("profileDropdown");
+                    
 
                 if (result == undefined || result.result === "User not verified!") {
-
-                  status.innerText = "Login";
-                  active.href = "/pages/login.html";
-                
-                  profileDropdown.style.display = "none";
+                    let ele = document.getElementById("userVerify");
+                    ele.innerText = "You need to login first."
+                    document.querySelector(".sell-form").addEventListener("submit", async (e) => {
+                        e.preventDefault(); // stop normal form submit
+                        status.innerText = "Login";
+                        
+                        profileDropdown.style.display = "none";
+                    })
+                    let ele2 = document.getElementById("toMyItems");
+                    ele2.href = "/pages/login.html"
                 } 
                 else {
                     console.log("Index.html----", result);

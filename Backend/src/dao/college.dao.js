@@ -5,7 +5,7 @@ export const saveCollege = async(college_id)=>{
         let college_as_id = college_id.split(" ").join("").toLowerCase()
         let newCollege = await collegeModel.findOne({id:college_as_id})
         console.log(college_as_id,newCollege)
-        if(newCollege==undefined){
+        if(newCollege==undefined || newCollege == null){
             newCollege = new collegeModel({
                 id:college_as_id,
                 name:college_id

@@ -3,7 +3,7 @@ import { connectDB } from './src/config/mongo.config.js';
 import dotenv from "dotenv";
 import cloudinary_config from './src/config/cloudinary.config.js';
 import { upload } from './src/middleware/storage.middleware.js';
-import { getAllColleges, productDetails, productFilters } from './src/controller/product.controller.js';
+import { getAllColleges, productDetails, productFilters, myItems } from './src/controller/product.controller.js';
 import createUser from './src/controller/user.controller.js';
 import { home } from './src/controller/homePage.controller.js'
 import { findUser } from './src/controller/login.controller.js';
@@ -15,11 +15,6 @@ dotenv.config("./.env")
 
 
 const app = express()
-
-
-
-app.use(express.static('../Frontend/public'));
-
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
@@ -41,7 +36,6 @@ app.get("/", home); // Home Page
 app.get('/loginVerify', (req, res) => {
     try {
         const data = verifyToken(req);
-        console.log("app.js => ", data)
         if(data.result == false) return res.json({result: "User not verified!"})
         else return res.json(data);
     }
@@ -56,6 +50,7 @@ app.get('/loginVerify', (req, res) => {
 
 
 app.post('/login', findUser);   // Login
+
 
 app.get('/logout', (req, res) => {
     console.log("app.js......", req.cookies);
@@ -72,12 +67,6 @@ app.post('/product/details', upload.single('image_urls'), isLoggedIn, productDet
 
 app.post("/create_account", createUser);    // create a new account
 
-
-app.get('/',(req,res)=>{
-    res.sendFile('/Users/himanshu/Desktop/JS/Projects/campus-connect-market/Frontend/public/pages/index.html')
-})
-
-
 app.get('/product/details',(req,res)=>{
     res.sendFile('/Users/himanshu/Desktop/JS/Projects/campus-connect-market/Frontend/public/pages/sell-item.html')
 })
@@ -85,6 +74,8 @@ app.get('/product/details',(req,res)=>{
 app.post('/product/details',upload.single('image_urls'),productDetails)
 app.get('/getProduct',productFilters)
 app.get('/getAllColleges',getAllColleges)
+app.get("/myItems", isLoggedIn, myItems);  // Get Own Items 
+
 
 app.listen(2000,() => {
     connectDB()
