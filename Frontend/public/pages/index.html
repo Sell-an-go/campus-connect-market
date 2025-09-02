@@ -20,19 +20,26 @@
     <div class="container">
       <header>
             <nav class="navbar">
-
                 <a href="" class="logo">
                     <img src="../views/weblogo.png" alt="CampusMarket Logo"> <div>
                         <strong>CampusMarket</strong>
                         <span>Student Marketplace</span>
                     </div>
                 </a>
+                
+                <ul class="nav-links">
+                  <li> <a href=""> Home </a></li>
+                  <li> <a href="/pages/sell-item.html">+ Sell Items </a></li>
+                  <li> <a href="pages/myItems.html" id="toMyItems"> My Items </a></li>
+                </ul>
+
                 <div class="profile-dropdown">
                     <a href="/pages/login.html" class="nav-button active" id="active"> 
                         <i class="fa-regular fa-user"></i>
                         <span id="isActive">Login</span>
                     </a>
                     <div class="dropdown-content" id="profileDropdown">
+
                         <a href=""> <i class="fa-solid fa-user-circle"></i> Profile</a>
                         <a id="logout-btn"> Logout</a>
                     </div>
@@ -59,7 +66,7 @@
             <button id="filter-btn-All Categories" class="filter-btn active" value="all categories">
               All Categories
             </button>
-            <button id="filter-btn-Furniture" class="filter-btn" value-="furniture">
+            <button id="filter-btn-Furniture" class="filter-btn" value="furniture">
               Furniture
             </button>
             <button id="filter-btn-Electronics" class="filter-btn" value="electronics">
@@ -256,7 +263,6 @@
           );
         }
       }
-     
 
       // Loops for adding eventListener to every category.
       const arrCategory = [
@@ -341,10 +347,13 @@
 
                 if (result == undefined || result.result === "User not verified!") {
 
-                  status.innerText = "Login";
-                  active.href = "/pages/login.html";
-                
-                  profileDropdown.style.display = "none";
+                    status.innerText = "Login";
+                    active.href = "/pages/login.html";
+                  
+                    profileDropdown.style.display = "none";
+
+                    let ele = document.getElementById("toMyItems");
+                    ele.href = "/pages/login.html"
                 } 
                 else {
                     console.log("Index.html----", result);
@@ -379,6 +388,5 @@
         })
     </script>
     
-
 </body>
 </html>

@@ -49,5 +49,16 @@ export const getAllColleges = async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 }
-}
 
+export const myItems = async (req, res) => {
+    console.log("My_Items: ", req.user);
+    try {
+        const products = await product.find({owner_id: req.user._id});
+        console.log(products)
+        res.json(products);
+    }
+    catch(err) {
+        console.log("ERROR IN FETCHING MY_PRODUCTS : ", err);
+        return 
+    }
+}

@@ -294,6 +294,7 @@ body {
 
 .condition-tag {
     right: 12px;
+    color: #f1f1f1;
 }
 
 .good { background-color: var(--tag-good-bg); color: var(--tag-good-text); }
@@ -515,4 +516,21 @@ body {
 
 .dropdown-content.show {
     display: block;
+}
+
+
+.green-frame {
+    border: 2px solid green;
+    background-color: #16A34A;
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.red-frame {
+    border: 2px solid rgb(214, 79, 79);
+    background-color: rgb(200, 28, 28);
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
 }
