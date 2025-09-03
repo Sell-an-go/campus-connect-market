@@ -71,9 +71,8 @@ app.get('/product/details',(req,res)=>{
     res.sendFile('/Users/himanshu/Desktop/JS/Projects/campus-connect-market/Frontend/public/pages/sell-item.html')
 })
 
-app.post('/product/details',upload.single('image_urls'),productDetails)
-app.get('/getProduct',productFilters)
-app.get('/getAllColleges',getAllColleges)
+app.get('/getProduct', productFilters)
+app.get('/getAllColleges', getAllColleges)
 app.get("/myItems", isLoggedIn, myItems);  // Get Own Items 
 
 
