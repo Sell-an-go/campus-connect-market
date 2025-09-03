@@ -11,8 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- myItems.html -->
-
 </head>
 <body>
 
@@ -125,77 +123,8 @@
         </main>
     </div>
 
-    <script>
-
-        const input = document.getElementById("product-image");
-        const label = document.getElementById("upload-label");
-      
-        input.addEventListener("change", () => {
-          if (input.files && input.files[0]) {
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(input.files[0]);
-            img.style.width = "200px"
-            img.style.height = "100px"
-            label.innerHTML = "";
-            label.style.padding = "10px";
-            label.appendChild(img);
-           
-          }
-        });
-
-        (async function() {
-            try {
-                const loginCheck = await fetch("http://localhost:2000/loginVerify");
-                const result = await loginCheck.json();
-
-                let status = document.getElementById("isActive");
-                let active = document.getElementById("active");
-                const profileDropdown = document.getElementById("profileDropdown");
-                    
-
-                if (result == undefined || result.result === "User not verified!") {
-                    let ele = document.getElementById("userVerify");
-                    ele.innerText = "You need to login first."
-                    document.querySelector(".sell-form").addEventListener("submit", async (e) => {
-                        e.preventDefault(); // stop normal form submit
-                        status.innerText = "Login";
-                        
-                        profileDropdown.style.display = "none";
-                    })
-                    let ele2 = document.getElementById("toMyItems");
-                    ele2.href = "/pages/login.html"
-                } 
-                else {
-                    console.log("Index.html----", result);
-                    status.innerText = result.username;
-                    active.href = "javascript:void(0)"; // disable link
-                    
-                    active.addEventListener("click", (event) => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      profileDropdown.classList.toggle("show");
-                    });
-                  
-                    window.addEventListener("click", (event) => {
-                      if (
-                        profileDropdown.classList.contains("show") &&
-                        !active.contains(event.target)
-                      ) {
-                        profileDropdown.classList.remove("show");
-                      }
-                    });
-                }
-        }  catch (err) {
-            console.error("Error in login verify fetch:", err);
-        }
-        })();
-        let btn = document.getElementById("logout-btn");
-        btn.addEventListener("click", async () => {
-            console.log("Im working!")
-            await fetch("http://localhost:2000/logout"); 
-            window.location.href = "/";
-        })
-    </script>
+    <script src="../scripts/loginVerify.js"></script>
+    <script src="../scripts/logout.js"></script>
 
 </body>
 </html>
