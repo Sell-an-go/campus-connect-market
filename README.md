@@ -30,12 +30,12 @@ A student-to-student marketplace built for campuses — where students can buy, 
 
 <h2> 🎯 Features </h2>
 
-✅ Browse Listings – Students can explore items across categories (books, furniture, electronics, etc.)
-✅ Filter & Search – Quickly find items by category, college, or keyword search.
-✅ Sell Items – Students can list products with images, descriptions, and conditions.
-✅ User Authentication – JWT-based login ensures only verified students can post or buy.
-✅ Profile & My Items – Manage your own listings, mark items as sold/available.
-✅ Responsive Design – Clean, modern UI that works on desktop and mobile.
+• Browse Listings – Students can explore items across categories (books, furniture, electronics, etc.)
+• Filter & Search – Quickly find items by category, college, or keyword search.
+• Sell Items – Students can list products with images, descriptions, and conditions.
+• User Authentication – JWT-based login ensures only verified students can post or buy.
+• Profile & My Items – Manage your own listings, mark items as sold/available.
+• Responsive Design – Clean, modern UI that works on desktop and mobile.
 
  <h2> 🛠️ Tech Stack </h2>
 
