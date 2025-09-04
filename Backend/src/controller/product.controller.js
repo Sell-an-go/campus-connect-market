@@ -22,18 +22,19 @@ export const productFilters = async(req,res)=>{
         console.log(category,college)
         let products = []
         if(college == "All Colleges" && category=="all categories"){
-        products = await product.find()
+            products = await product.find()
         }
         else if(college == "All Colleges"){
             products = await product.find({category:category})
         }
         else if(category=="all categories"){
-            products = await product.find({college_id:college})
+            products = await product.find({college_id: { $regex: college, $options: "i" }})
         }
         else{
-            products = await product.find({category:category,college_id:college})
+            products = await product.find({category:category, college_id: { $regex: college, $options: "i" }});
+            console.log("Filtered Colleges ", products);
         }
-        res.json(products)
+        res.json(products);
     }
     catch(error){
         res.status(500).json({message:error.message})

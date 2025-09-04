@@ -2,7 +2,7 @@ import product from "../models/product.model.js"
 
 export const saveProduct = async(title,description,price,category,
     condition,image_urls, owner_id, college_id,status,location)=>{
-        try{
+        try {
             const newProduct = new product({
                 title,
                 description,
