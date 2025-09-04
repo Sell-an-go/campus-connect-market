@@ -68,7 +68,7 @@ app.post('/product/details', upload.single('image_urls'), isLoggedIn, productDet
 app.post("/create_account", createUser);    // create a new account
 
 app.get('/product/details',(req,res)=>{
-    res.sendFile('/Users/himanshu/Desktop/JS/Projects/campus-connect-market/Frontend/public/pages/sell-item.html')
+    res.sendFile(__dirname + '../Frontend/public/pages/sell-item.html')
 })
 
 app.get('/getProduct', productFilters)
