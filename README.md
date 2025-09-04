@@ -2,7 +2,11 @@
 
 A student-to-student marketplace built for campuses — where students can buy, sell, and exchange used items like books, furniture, electronics, and more. Think of it as a mini OLX, but exclusive to students in your campus ecosystem.
 
-<img width="682" height="634" alt="Screenshot 2025-09-03 at 6 18 49 PM" src="https://github.com/user-attachments/assets/a24b8237-3c03-4118-9a9c-4b1c62301291" />
+<img width="855" height="616" alt="Screenshot 2025-09-05 at 12 03 42 AM" src="https://github.com/user-attachments/assets/711647ac-9b45-43de-bede-c8954de2413a" />
+
+
+
+
 
 
 <h2> 🚀 Why this project? </h2>
