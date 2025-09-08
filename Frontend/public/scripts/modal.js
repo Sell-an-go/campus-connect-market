@@ -11,6 +11,7 @@ const modalCategory = document.getElementById("modal-category");
 const modalCondition = document.getElementById("modal-condition");
 const modalDescription = document.querySelector(".modal-description");
 const modalLocation = document.querySelector(".modal-location");
+const modalButton = document.getElementById("Contact-btn-sell")
 
 
 const openModal = (product) => {
@@ -21,7 +22,9 @@ const openModal = (product) => {
   modalCondition.textContent = product.condition;
   modalDescription.textContent = product.description;
   modalLocation.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${product.location}`;
-
+  modalButton.addEventListener("click",()=>{
+    window.location.href = `/item/contact?product=${encodeURIComponent(JSON.stringify(product))}`
+  })
   modalOverlay.style.display = "flex";
 };
 

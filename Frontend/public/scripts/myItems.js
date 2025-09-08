@@ -69,7 +69,7 @@
     try {
       let response = await fetch("http://localhost:2000/myItems");
       let products = await response.json();
-      console.log(products);
+      //console.log(products);
 
       const grid = document.getElementById("product-grid");
 

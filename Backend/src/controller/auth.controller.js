@@ -14,6 +14,6 @@ export const createToken = (res, email, username) => {
 export const verifyToken = (req) => {
     if (req.cookies?.token == "" || req.cookies?.token == undefined) return {result: false};
     const data = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-    console.log("auth.controller------ : ", data);
+    //console.log("auth.controller------ : ", data);
     return data;
 }

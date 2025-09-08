@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusMarket</title>
+    <link rel="stylesheet" href="../styleSheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+  </head>
+  <body>
+    <div class="container">
+      <header>
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <img src="../views/weblogo.png" alt="CampusMarket Logo"> 
+                    <div>
+                        <strong>CampusMarket</strong>
+                        <span>Student Marketplace</span>
+                    </div>
+                </a>
+                
+                <ul class="nav-links">
+                  <li> <a href="/"> Home </a></li>
+                  <li> <a href="/pages/sell-item.html">+ Sell Items </a></li>
+                  <li> <a id="toMyItems"> My Items </a></li>
+                </ul>
+
+                <div class="profile-dropdown">
+                    <a href="/pages/login.html" class="nav-button active" id="active"> 
+                        <i class="fa-regular fa-user"></i>
+                        <span id="isActive">Login</span>
+                    </a>
+                    <div class="dropdown-content" id="profileDropdown">
+
+                        <a href=""> <i class="fa-solid fa-user-circle"></i> Profile</a>
+                        <a id="logout-btn"> Logout</a>
+                    </div>
+                </div>
+            </nav>
+       </header>
+
+       <section id="itemContactSection" class="listings-section">
+
+       </section>
+
+    </div>
+    <script src="../scripts//itemContact.js"></script>
+    <script src="../scripts//logout.js"></script>
+</body>
+</html>

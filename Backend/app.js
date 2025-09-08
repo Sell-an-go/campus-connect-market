@@ -24,6 +24,7 @@ app.use(cookieParser());
 
 import path from "path";
 import { fileURLToPath } from "url";
+import userdata, { userSchema } from './src/models/user.model.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -53,7 +54,6 @@ app.post('/login', findUser);   // Login
 
 
 app.get('/logout', (req, res) => {
-    console.log("app.js......", req.cookies);
     res.clearCookie("token","",{
         httpOnly: true,
         secure: false,  
@@ -75,6 +75,15 @@ app.get('/getProduct', productFilters)
 app.get('/getAllColleges', getAllColleges)
 app.get("/myItems", isLoggedIn, myItems);  // Get Own Items 
 
+app.get('/item/contact',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../Frontend/public/pages/itemContact.html'))
+})
+
+app.get('/findUser',isLoggedIn,async(req,res)=>{
+    let id = req.query.id
+    let user = await userdata.findOne({_id:id},{password:0})
+    res.json(user)
+})
 
 app.listen(2000,() => {
     connectDB()
