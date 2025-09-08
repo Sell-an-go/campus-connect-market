@@ -10,7 +10,6 @@ const createUser = async(req, res) => {
         return res.send("User Exists!");
     }
     else {
-        console.log(email, password, username, contactNo);
         const encryptedPassword = await encryptPassword(password);
         await saveData(email, encryptedPassword, username, contactNo);
         createToken(res, email, username);

@@ -4,7 +4,7 @@ import { createToken } from './auth.controller.js';
 export const findUser = async(req, res) => {
     try {
         let { email, password } = req.body;
-        console.log(email, password);
+        //console.log(email, password);
         let finded = await verifyPassword(email, password);
         if(finded == undefined || finded.result == false) {
             console.log("Inside-FindUser---", finded.result)
@@ -12,8 +12,8 @@ export const findUser = async(req, res) => {
         }
         else {
             req.user = finded;
-            console.log("Inside login.controller ", req.user);
-            console.log("FINDED.NAME ======", finded.name);
+            //console.log("Inside login.controller ", req.user);
+            //console.log("FINDED.NAME ======", finded.name);
             createToken(res, email, finded.name);
             res.json({result: true});
         }

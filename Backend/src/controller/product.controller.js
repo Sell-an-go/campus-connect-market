@@ -7,7 +7,6 @@ import collegeModel from "../models/college.model.js"
 export const productDetails = async(req,res)=>{
     const {title,description,price,category,condition
         ,college_id,status,location} = req.body
-    console.log("Product-----", req.user);
     const image_urls = await imageUpload(req.file.buffer)
 
     const product = await saveProduct(title,description,price,category,
@@ -19,7 +18,6 @@ export const productDetails = async(req,res)=>{
 export const productFilters = async(req,res)=>{
     try{
         let {category,college} = req.query
-        console.log(category,college)
         let products = []
         if(college == "All Colleges" && category=="all categories"){
             products = await product.find()
@@ -32,7 +30,6 @@ export const productFilters = async(req,res)=>{
         }
         else{
             products = await product.find({category:category, college_id: { $regex: college, $options: "i" }});
-            console.log("Filtered Colleges ", products);
         }
         res.json(products);
     }
@@ -52,10 +49,8 @@ export const getAllColleges = async(req,res)=>{
 }
 
 export const myItems = async (req, res) => {
-    console.log("My_Items: ", req.user);
     try {
         const products = await product.find({owner_id: req.user._id});
-        console.log(products)
         res.json(products);
     }
     catch(err) {

@@ -60,11 +60,11 @@
             try {
                 const loginCheck = await fetch("http://localhost:2000/loginVerify");
                 const result = await loginCheck.json();
-
+                
                 let status = document.getElementById("isActive");
                 let active = document.getElementById("active");
                 const profileDropdown = document.getElementById("profileDropdown");
-
+              
                 if (result == undefined || result.result === "User not verified!") {
 
                     status.innerText = "Login";
